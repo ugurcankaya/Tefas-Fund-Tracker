@@ -1,6 +1,7 @@
 import requests
 import lxml.html
-
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 link = "https://tefas.gov.tr/FonAnaliz.aspx?FonKod=AFT"
 f = requests.get(link,  verify=False)
 principal = 118861
@@ -23,3 +24,4 @@ elif firstPaid > presentVal:
 else:
   print("Gain!  = +" + str( round(presentVal-firstPaid, 2) ) + "TL")
   print(principal*value)
+print(value)
